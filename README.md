@@ -7,7 +7,7 @@ Introduction goes here.
 1. Add this extension to your Gemfile with this line:
 
     ```ruby
-    gem 'spree_report_out_of_stock', github: '[your-github-handle]/spree_report_out_of_stock'
+    gem 'spree_report_out_of_stock', github: 'freddyhto/spree_report_out_of_stock'
     ```
 
 2. Install the gem using Bundler
