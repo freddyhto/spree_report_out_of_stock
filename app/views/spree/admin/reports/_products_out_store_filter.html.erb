@@ -1,0 +1,17 @@
+<%= search_form_for @search, url: spree.products_out_stock_admin_reports_path  do |s| %>
+  <div class="form-group date-range-filter">
+    <%= label_tag nil, Spree.t(:date_range) %>
+    <div class="date-range-filter row">
+      <div class="col-md-6">
+        <%= s.text_field :created_at_gt, class: 'datepicker datepicker-from form-control', value: datepicker_field_value(params[:q][:created_at_gt]) %>
+      </div>
+      <div class="col-md-6">
+        <%= s.text_field :created_at_lt, class: 'datepicker datepicker-to form-control', value: datepicker_field_value(params[:q][:created_at_lt]) %>
+    </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= button Spree.t(:search), 'search' %>
+  </div>
+<% end %>

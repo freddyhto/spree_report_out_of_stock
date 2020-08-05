@@ -8,12 +8,12 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_report_out_of_stock'
   s.version     = SpreeReportOutOfStock.version
-  s.summary     = 'Add extension summary here'
-  s.description = 'Add (optional) extension description here'
+  s.summary     = 'Add view to show history of prodcuts out of stock'
+  s.description = 'Allow you search between dates when a products ran out of date'
   s.required_ruby_version = '>= 2.2.7'
 
-  s.author    = 'You'
-  s.email     = 'you@example.com'
+  s.author    = 'Freddy Tellez'
+  s.email     = 'ftellez@acid.cl'
   s.homepage  = 'https://github.com/your-github-handle/spree_report_out_of_stock'
   s.license = 'BSD-3-Clause'
 

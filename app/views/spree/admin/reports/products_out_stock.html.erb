@@ -1,0 +1,29 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:reports), spree.admin_reports_url %> /
+  <%= Spree.t(:products_out_stock) %>
+<% end %>
+
+<div class="card bg-light mb-3">
+  <div class="card-body">
+    <%= render partial: 'products_out_store_filter' %>
+  </div>
+</div>
+
+<div data-hook="reports">
+  <table class="table" id='listing_products_out_stock'>
+    <thead>
+      <tr data-hook="admin_reports_products_out_store">
+        <th><%= Spree::Product.human_attribute_name(:name) %></th>
+        <th><%= Spree.t(:date_out_stock) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @inventorys.each do |inventory| %>
+        <% product = inventory[:product] %>
+        <tr data-hook="admin_reports_index_rows" class="<%= cycle('odd', 'even') %>">
+          <td><%= link_to(product.name, admin_product_path(product) ) %></td>
+          <td><%= inventory[:date] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</div>
