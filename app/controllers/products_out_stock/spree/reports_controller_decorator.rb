@@ -1,6 +1,6 @@
 module ProductsOutStock
   module Spree
-    module ProductsOutStockControllerDecorator
+    module ReportsControllerDecorator
 
       def initialize
         super
@@ -39,4 +39,4 @@ module ProductsOutStock
   end
 end
 
-Spree::Admin::ReportsController.prepend ProductsOutStock::Spree::ProductsOutStockControllerDecorator
+Spree::Admin::ReportsController.prepend ProductsOutStock::Spree::ReportsControllerDecorator
