@@ -3,3 +3,4 @@ en:
     products_out_stock: Products out of stock
     description: historical products out stock
     date_out_stock: Fecha en la que se quedo sin stock
+    stock_location: Stock Location

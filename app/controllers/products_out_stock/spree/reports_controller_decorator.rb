@@ -13,12 +13,27 @@ module ProductsOutStock
 
       def products_out_stock
         @inventorys = []
-        @search = ::Spree::StockMovement.includes(stock_item: [variant: [:product]] ).ransack(params[:q])
+        @search = ::Spree::StockMovement.includes(stock_item: [:stock_location, variant: [:product]] ).ransack(params[:q])
         @search.result.group_by(&:stock_item_id).each do |item_id, movements|
           total = 0
-          movements.each do |movement|
-            total += movement.quantity
-            @inventorys << { date: movement.created_at, product: movement.stock_item.variant.product } if total == 0
+          delete_stock_item = ::Spree::StockItem.only_deleted.ransack(params[:q]).result.find_by id: item_id
+          if delete_stock_item
+            @inventorys << {
+              date: delete_stock_item.deleted_at,
+              product: delete_stock_item.variant.product,
+              location: delete_stock_item.stock_location
+            }
+          else
+            movements.each do |movement|
+              total += movement.quantity
+              if total == 0
+                @inventorys << {
+                  date: movement.created_at,
+                  product: movement.stock_item.variant.product,
+                  location: movement.stock_item.stock_location
+                }
+              end
+            end
           end
         end
       end

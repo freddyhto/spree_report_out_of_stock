@@ -15,6 +15,7 @@
       <tr data-hook="admin_reports_products_out_store">
         <th><%= Spree::Product.human_attribute_name(:name) %></th>
         <th><%= Spree.t(:date_out_stock) %></th>
+        <th><%= Spree.t(:stock_location) %></th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@
         <tr data-hook="admin_reports_index_rows" class="<%= cycle('odd', 'even') %>">
           <td><%= link_to(product.name, admin_product_path(product) ) %></td>
           <td><%= inventory[:date] %></td>
+          <td><%= inventory[:location].name %></td>
         </tr>
       <% end %>
     </tbody>
